@@ -1,0 +1,69 @@
+  <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CredDebt</title>
+    <link rel="stylesheet" href="name.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <a class="a" href="/">Home</a>
+        <a class="a" href="/New">Add new Contact</a>
+        <a class="a" href="/Exist">Existing Contacts</a>
+      </header>
+      <div class="info">
+        <h3>Name: <%=items.name %></h3>
+        <h4>Phone Number: <%=items.phoneNumber %></h4>
+        <h4>Email Id: <%=items.emailId %></h4>
+        <h4>Address: <%=items.address %></h4>
+        <h4>Total: <%=items.total%></h4>
+        <!-- <form action="/sendMsg" method="post">
+          <input type="hidden" name="sendNumber" value="<%= items.phoneNumber %>">
+          <input type="hidden" name="sendAmount" value="<%= items.total %>">
+          <button type="submit" name="sendBtn">Send Message</button>
+        </form> -->
+      </div>
+      <div class="mainTransact">
+        <div class="date Tag ">
+          <h4>Date of Transaction</h4>
+        </div>
+        <div class="amount Tag ">
+          <h4>Amount</h4>
+        </div>
+        <div class="desc Tag ">
+          <h4>Description</h4>
+        </div>
+        <br>
+
+        <% (items.items).forEach(function(frnd){ %>
+        <div class="date Tag th">
+          <h4><%=frnd.date%></h4>
+        </div>
+        <div class="amount Tag th">
+          <h4><%=frnd.amount%></h4>
+        </div>
+        <div class="desc Tag th">
+          <h4><%=frnd.desc %></h4>
+        </div>
+        <br>
+        <% }) %>
+
+        <form class="fillAmt" action="/edit" method="post">
+          <input type="text" name="date" placeholder="Enter date" autocomplete="off" value="-">
+          <input type="number" name="amount" placeholder="Enter amount" required autocomplete="off">
+          <input type="text" name="desc" placeholder="Enter description" autocomplete="off" value="-">
+          <input type="hidden" name="checker" value="add">
+          <button type="submit" name="button" value="<%=items.name%>">Add</button>
+        </form>
+        <form class="fillAmt" action="/edit" method="post">
+          <input type="hidden" name="checker" value="reset">
+          <button type="submit" name="button" class="reset" value="<%=items.name%>">Reset</button>
+        </form>
+      </div>
+
+
+    </div>
+    <footer>Made by: Parth Naghera, DAIICT</footer>
+  </body>
+</html>

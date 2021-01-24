@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CreDebt</title>
+    <link rel="stylesheet" href="stylesHome.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <a class="a" href="/">Home</a>
+        <a class="a" href="/New">Add new Contact</a>
+        <a class="a" href="/Exist">Existing Contacts</a>
+
+      </header>
+
+      <div class="name Tag title">
+        <h3>Friend Name</h3>
+      </div>
+      <div class="phoneNumber Tag title">
+        <h3>Friend's Phone Number</h3>
+      </div>
+      <div class="email Tag title">
+        <h3>Friend's EmailId</h3>
+      </div>
+      <div class="change">
+        <h3>Edit</h3>
+      </div>
+
+      <br>
+
+      <% items.forEach(function(frnd){ %>
+      <div class="name Tag">
+        <h4><%=frnd.name%></h4>
+      </div>
+      <div class="phoneNumber Tag">
+        <h4><%=frnd.phoneNumber%></h4>
+      </div>
+      <div class="email Tag">
+        <h4><%=frnd.emailId %></h4>
+      </div>
+      <div class="change2">
+        <a class="aedit" href="/<%=frnd.name %>">Edit</a>
+        <form class="del" action="/delete" method="post">
+          <button type="submit" name="button" value="<%=frnd.name%>">Delete</button>
+
+        </form>
+      </div>
+
+      <br>
+      <% }) %>
+
+    </div>
+
+
+
+  </body>
+  <footer>Made by: Parth Naghera, DAIICT</footer>
+  </html>
+<!-- //org list.ejs connected to list.ejs for existing contacts -->

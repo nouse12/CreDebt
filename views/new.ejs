@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CreDebt</title>
+    <link rel="stylesheet" href="stylesHome.css">
+    <link rel="stylesheet" href="new.css">
+  </head>
+  <body>
+    <header class="header">
+      <a href="/">Home</a>
+      <a href="/New">Add new Contact</a>
+      <a href="/Exist">Existing Contacts</a>
+    </header>
+    <h1 class="newHeader">Add New Contact Details below</h1>
+    <div class="newContactForm">
+      <form class="new User" action="/New" method="post">
+        <label for="Name" class="first">Name</label>
+        <input type="text" name="newUserName" autocomplete="off" required><br>
+        <label for="phoneNumber">Phone Number</label>
+        <input type="tel" name="phNo" autocomplete="off" required><br>
+        <label for="emailId">Email Id</label>
+        <input type="email" name="emailId"autocomplete="off" value="-"><br>
+        <label for="address">Address</label><br>
+        <textarea name="address" rows="8" cols="80" autocomplete="off" value="-"></textarea><br>
+        <button type="submit" name="newContact" class="newBtn">Add Contact</button>
+      </form>
+    </div>
+
+
+  </body>
+  <footer>Made by: Parth Naghera, DAIICT</footer>
+</html>
+<!-- for creating new contacts -->
