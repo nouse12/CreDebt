@@ -1,10 +1,10 @@
 //new list-app for existing contacts
-// require("dotenv").config();
+require("dotenv").config();
 const express=require("express");
 const bodyParser=require("body-parser");
 const mongoose=require("mongoose");
 const _=require("lodash");
-// const twilio = require('twilio'); for sending message
+const twilio = require('twilio'); //for sending message
 
 const app=express();
 app.set('view engine','ejs');
@@ -12,11 +12,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 mongoose.connect("mongodb://localhost:27017/contactDB", {useNewUrlParser: true,useUnifiedTopology: true});
 
-////////////////send message system////simple code from twilio/////////////////////
-// const accountSid = process.env.TWILIO_ACCOUNT_SID;
-// const authToken = process.env.TWILIO_AUTH_TOKEN;
-// const client = require('twilio')(accountSid, authToken);
-///////////////////////////////////////////////////////////
+//////////////send message system////simple code from twilio/////////////////////
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+/////////////////////////////////////////////////////////
 
 const subSchema={
   amount: Number,
@@ -121,24 +121,24 @@ app.post("/edit",function(req,res){
 });
 
 // send message system
-// app.post("/sendMsg",function(req,res){
-//   let number=req.body.sendNumber;
-//   let amount=req.body.sendAmount;
-//   let sent;
-//   if(amount>=0){
-//   sent="You need to pay Parth Naghera an amount of "+amount+" rupees.";
-// }
-// else{
-//   sent="Parth Naghera will pay you an amount of "+amount+" rupees.";
-// }
-//   client.messages
-//   .create({
-//      body: sent,
-//      from: "+12517141469",
-//      to: "+916355395164"
-//    }).then((message)=>console.log(message));
-//   res.redirect("/Exist");
-// });
+app.post("/sendMsg",function(req,res){
+  let number=req.body.sendNumber;
+  let amount=req.body.sendAmount;
+  let sent;
+  if(amount>=0){
+  sent="You need to pay Parth Naghera an amount of "+amount+" rupees.";
+}
+else{
+  sent="Parth Naghera will pay you an amount of "+-1*amount+" rupees.";
+}
+  client.messages
+  .create({
+     body: sent,
+     from: "+12517141469",
+     to: "+916355395164"
+   });
+  res.redirect("/Exist");
+});
 
 app.post("/delete",function(req,res){
   let name=req.body.button;
